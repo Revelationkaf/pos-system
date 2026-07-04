@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pos.controller.ProductsController" style="-fx-padding: 20;">
+    <Label text="Product Management" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="txtSearch" promptText="Search products..." prefWidth="300"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnClose" text="Close" onAction="#handleClose"/>
+    </HBox>
+
+    <TableView fx:id="productsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colName" text="Name" prefWidth="200"/>
+            <TableColumn fx:id="colBarcode" text="Barcode" prefWidth="120"/>
+            <TableColumn fx:id="colCategory" text="Category" prefWidth="100"/>
+            <TableColumn fx:id="colPrice" text="Price" prefWidth="80"/>
+            <TableColumn fx:id="colStock" text="Stock" prefWidth="60"/>
+        </columns>
+    </TableView>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <Label text="Barcode:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <TextField fx:id="txtBarcode" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+        <Label text="Category:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtCategory" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label text="Price:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <TextField fx:id="txtPrice" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+        <Label text="Stock:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="txtStock" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Label text="Description:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <TextArea fx:id="txtDescription" GridPane.columnIndex="3" GridPane.rowIndex="2" prefRowCount="2"/>
+    </GridPane>
+
+    <HBox spacing="10">
+        <Button fx:id="btnAdd" text="Add Product" onAction="#handleAdd"/>
+        <Button fx:id="btnUpdate" text="Update" onAction="#handleUpdate" disable="true"/>
+        <Button fx:id="btnDelete" text="Delete" onAction="#handleDelete" disable="true"/>
+        <Button fx:id="btnClear" text="Clear" onAction="#handleClear"/>
+    </HBox>
+</VBox>

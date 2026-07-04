@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="loginPane" alignment="CENTER" spacing="15" style="-fx-background-color: linear-gradient(to bottom, #2c3e50, #3498db);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pos.controller.LoginController">
+    <padding>
+        <Insets bottom="40" left="40" right="40" top="40"/>
+    </padding>
+
+    <Label text="POS SYSTEM" textFill="white">
+        <font>
+            <Font name="System Bold" size="32"/>
+        </font>
+    </Label>
+
+    <Label text="Point of Sale Management" textFill="#ecf0f1">
+        <font>
+            <Font size="14"/>
+        </font>
+    </Label>
+
+    <VBox spacing="10" maxWidth="300" alignment="CENTER">
+        <padding>
+            <Insets top="20"/>
+        </padding>
+
+        <TextField fx:id="usernameField" promptText="Username" style="-fx-background-radius: 5; -fx-padding: 10;">
+            <font>
+                <Font size="14"/>
+            </font>
+        </TextField>
+
+        <PasswordField fx:id="passwordField" promptText="Password" style="-fx-background-radius: 5; -fx-padding: 10;">
+            <font>
+                <Font size="14"/>
+            </font>
+        </PasswordField>
+
+        <Label fx:id="lblError" text="Error message" textFill="#e74c3c" visible="false" wrapText="true"/>
+
+        <Button fx:id="loginButton" text="LOGIN" onAction="#handleLogin" maxWidth="Infinity" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 12;" defaultButton="true">
+            <font>
+                <Font size="14"/>
+            </font>
+        </Button>
+    </VBox>
+
+    <Label text="Default: admin / admin123" textFill="#bdc3c7">
+        <font>
+            <Font size="11"/>
+        </font>
+    </Label>
+</VBox>

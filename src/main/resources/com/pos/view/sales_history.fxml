@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pos.controller.SalesHistoryController" style="-fx-padding: 20;">
+    <Label text="Sales History" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="From:" style="-fx-padding: 5;"/>
+        <DatePicker fx:id="dateFrom"/>
+        <Label text="To:" style="-fx-padding: 5;"/>
+        <DatePicker fx:id="dateTo"/>
+        <Button fx:id="btnFilter" text="Filter" onAction="#handleFilter"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnViewDetails" text="View Details" onAction="#handleViewDetails"/>
+        <Button fx:id="btnClose" text="Close" onAction="#handleClose"/>
+    </HBox>
+
+    <TableView fx:id="salesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colDate" text="Date" prefWidth="150"/>
+            <TableColumn fx:id="colReceipt" text="Receipt #" prefWidth="180"/>
+            <TableColumn fx:id="colTotal" text="Total" prefWidth="100"/>
+            <TableColumn fx:id="colPayment" text="Payment" prefWidth="100"/>
+            <TableColumn fx:id="colCashier" text="Cashier" prefWidth="120"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="20">
+        <Label text="Total Revenue:" style="-fx-font-weight: bold;"/>
+        <Label fx:id="lblTotalSales" text="$0.00" style="-fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="Transactions:" style="-fx-font-weight: bold;"/>
+        <Label fx:id="lblTotalTransactions" text="0" style="-fx-font-weight: bold;"/>
+    </HBox>
+</VBox>

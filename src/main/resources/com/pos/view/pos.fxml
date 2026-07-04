@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pos.controller.POSController">
+
+    <!-- Top Bar -->
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+            <Label text="POS SYSTEM" textFill="white">
+                <font>
+                    <Font name="System Bold" size="20"/>
+                </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblCashierName" text="Cashier: Admin" textFill="#ecf0f1"/>
+            <Label text=" | " textFill="#bdc3c7"/>
+            <Label fx:id="lblDateTime" text="2024-01-01 00:00:00" textFill="#ecf0f1"/>
+        </HBox>
+    </top>
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #34495e; -fx-padding: 15;" prefWidth="180">
+            <Button fx:id="btnProducts" text="Products" onAction="#handleProducts" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-padding: 10;"/>
+            <Button fx:id="btnSalesHistory" text="Sales History" onAction="#handleSalesHistory" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-padding: 10;"/>
+            <Button fx:id="btnReports" text="Reports" onAction="#handleReports" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-padding: 10;"/>
+            <Button fx:id="btnUsers" text="Users" onAction="#handleUsers" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER_LEFT; -fx-padding: 10;"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button fx:id="btnLogout" text="Logout" onAction="#handleLogout" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: #e74c3c; -fx-alignment: CENTER_LEFT; -fx-padding: 10;"/>
+            <Button fx:id="btnExit" text="Exit" onAction="#handleExit" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: #e74c3c; -fx-alignment: CENTER_LEFT; -fx-padding: 10;"/>
+        </VBox>
+    </left>
+
+    <!-- Center - Product Grid -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 10;">
+            <!-- Search Bar -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Search products..." prefWidth="250" style="-fx-padding: 8; -fx-background-radius: 5;"/>
+                <TextField fx:id="barcodeField" promptText="Scan barcode..." prefWidth="200" style="-fx-padding: 8; -fx-background-radius: 5;"/>
+                <ComboBox fx:id="categoryFilter" prefWidth="150" style="-fx-padding: 4;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <!-- Product Grid -->
+            <ScrollPane fx:id="productScrollPane" fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background: #ecf0f1;">
+                <FlowPane fx:id="productGrid" style="-fx-background-color: #ecf0f1; -fx-padding: 10;"/>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+    <!-- Right - Cart -->
+    <right>
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15;" prefWidth="400">
+            <Label text="Shopping Cart" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+            <TableView fx:id="cartTable" VBox.vgrow="ALWAYS" style="-fx-border-color: #ddd;">
+                <columns>
+                    <TableColumn fx:id="colItemName" text="Item" prefWidth="140"/>
+                    <TableColumn fx:id="colQty" text="Qty" prefWidth="80"/>
+                    <TableColumn fx:id="colPrice" text="Price" prefWidth="70"/>
+                    <TableColumn fx:id="colSubtotal" text="Total" prefWidth="70"/>
+                    <TableColumn fx:id="colAction" text="" prefWidth="40"/>
+                </columns>
+            </TableView>
+
+            <!-- Cart Summary -->
+            <VBox spacing="5" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <HBox>
+                    <Label text="Items:" style="-fx-font-size: 12;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblItemCount" text="0" style="-fx-font-weight: bold;"/>
+                </HBox>
+                <HBox>
+                    <Label text="Subtotal:" style="-fx-font-size: 12;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblSubtotal" text="$0.00" style="-fx-font-weight: bold;"/>
+                </HBox>
+                <HBox>
+                    <Label text="Tax (8%):" style="-fx-font-size: 12;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTax" text="$0.00" style="-fx-font-weight: bold;"/>
+                </HBox>
+                <HBox>
+                    <Label text="Discount:" style="-fx-font-size: 12; -fx-text-fill: #e74c3c;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblDiscount" text="$0.00" style="-fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+                </HBox>
+                <Separator/>
+                <HBox>
+                    <Label text="TOTAL:" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblTotal" text="$0.00" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Action Buttons -->
+            <HBox spacing="10">
+                <Button fx:id="btnClearCart" text="Clear" onAction="#handleClearCart" disable="true" maxWidth="Infinity" HBox.hgrow="ALWAYS" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12;"/>
+                <Button fx:id="btnApplyDiscount" text="Discount" onAction="#handleApplyDiscount" maxWidth="Infinity" HBox.hgrow="ALWAYS" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12;"/>
+                <Button fx:id="btnCheckout" text="CHECKOUT" onAction="#handleCheckout" disable="true" maxWidth="Infinity" HBox.hgrow="ALWAYS" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12; -fx-font-size: 14;"/>
+            </HBox>
+        </VBox>
+    </right>
+</BorderPane>

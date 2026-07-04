@@ -1,0 +1,40 @@
+pos-system/
+├── pom.xml
+├── README.md
+└── src/
+    └── main/
+        ├── java/
+        │   └── com/
+        │       └── pos/
+        │           ├── POSApplication.java          ← Main entry point
+        │           ├── controller/
+        │           │   ├── LoginController.java       ← Login screen logic
+        │           │   ├── POSController.java         ← Main POS dashboard
+        │           │   ├── ProductsController.java      ← Product CRUD
+        │           │   ├── SalesHistoryController.java  ← View past sales
+        │           │   ├── ReportsController.java       ← Charts & analytics
+        │           │   └── UsersController.java         ← User management (admin)
+        │           ├── dao/
+        │           │   ├── ProductDAO.java              ← Product database access
+        │           │   ├── SaleDAO.java                 ← Sales database access
+        │           │   └── UserDAO.java                 ← User database access
+        │           ├── model/
+        │           │   ├── Product.java                 ← Product entity
+        │           │   ├── CartItem.java                ← Cart item entity
+        │           │   ├── Sale.java                    ← Sale entity
+        │           │   └── User.java                    ← User entity
+        │           ├── service/
+        │           │   ├── SessionManager.java          ← Current user session
+        │           │   └── ReceiptService.java          ← Receipt generation
+        │           └── util/
+        │               └── DatabaseConnection.java    ← SQLite connection
+        └── resources/
+            └── com/
+                └── pos/
+                    └── view/
+                        ├── login.fxml                 ← Login UI
+                        ├── pos.fxml                   ← Main POS UI
+                        ├── products.fxml              ← Product management UI
+                        ├── sales_history.fxml         ← Sales history UI
+                        ├── reports.fxml               ← Reports UI
+                        └── users.fxml                 ← User management UI
